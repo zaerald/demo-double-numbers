@@ -1,9 +1,12 @@
+import Form from 'components/Form/Form';
+
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      Hello
+      <Form title='Input' subtitle='Array'/>
+      <Form title='Output' subtitle='Double'/>
     </div>
   );
 }
