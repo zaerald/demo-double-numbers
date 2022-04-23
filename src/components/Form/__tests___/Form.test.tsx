@@ -2,7 +2,7 @@ import { fireEvent, render, screen } from '@testing-library/react'
 import Form from '../Form'
 
 test('render title and subtitle', () => {
-  render(<Form title="My Title" subtitle="My Subtitle" />)
+  render(<Form id="test" title="My Title" subtitle="My Subtitle" />)
   const titleEl = screen.getByText(/My Title/)
   const subtitleEl = screen.getByText(/My Subtitle/)
 
@@ -11,9 +11,9 @@ test('render title and subtitle', () => {
 })
 
 test('input should be editable', () => {
-  render(<Form title="My Title" subtitle="My Subtitle" />)
+  render(<Form id="test" title="My Title" subtitle="My Subtitle" />)
 
-  const inputEl = screen.getByTestId<HTMLInputElement>('input')
+  const inputEl = screen.getByLabelText<HTMLInputElement>(/subtitle/i)
 
   fireEvent.change(inputEl, {
     target: {
@@ -25,10 +25,19 @@ test('input should be editable', () => {
 })
 
 test('disabled input should not be editable', () => {
-  render(<Form title="My Title" subtitle="My Subtitle" readOnly />)
+  render(<Form id="test" title="My Title" subtitle="My Subtitle" readOnly />)
 
-  const inputEl = screen.getByTestId<HTMLInputElement>('input')
+  const inputEl = screen.getByLabelText<HTMLInputElement>(/subtitle/i)
 
   expect(inputEl).toHaveAttribute('readOnly')
+})
+
+
+test('value should be assigned to the input field', () => {
+  render(<Form id="test"  title="My Title" subtitle="My Subtitle" value="test" />)
+
+  const inputEl = screen.getByLabelText<HTMLInputElement>(/subtitle/i)
+
+  expect(inputEl.value).toBe('test')
 })
 

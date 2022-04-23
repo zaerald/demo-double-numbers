@@ -1,21 +1,36 @@
+import { ChangeEvent } from 'react'
+
 interface FormProps {
+  id: string,
   title: string
   subtitle: string
+  value?: string
+  onChangeHandler?: (e: ChangeEvent<HTMLInputElement>) => void
   readOnly?: boolean
 }
 
-function Form({ title, subtitle, readOnly = false }: FormProps) {
+function Form({
+  id,
+  title,
+  subtitle,
+  value,
+  onChangeHandler = () => {},
+  readOnly = false,
+}: FormProps) {
   return (
     <form className="form">
       <h2>{title}</h2>
-      <label>{subtitle}</label>
+      <label htmlFor={`${id}-field`}>{subtitle}</label>
       <input
+        id={`${id}-field`}
         type="text"
+        onChange={onChangeHandler}
         readOnly={readOnly}
-        data-testid="input"
+        value={value}
       />
     </form>
   )
 }
 
 export default Form
+
