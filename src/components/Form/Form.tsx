@@ -1,7 +1,7 @@
 import { ChangeEvent } from 'react'
 
 interface FormProps {
-  id: string,
+  id: string
   title: string
   subtitle: string
   value?: string
@@ -33,4 +33,3 @@ function Form({
 }
 
 export default Form
-

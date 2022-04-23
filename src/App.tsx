@@ -1,34 +1,16 @@
-import Form from 'components/Form/Form'
 import { useState } from 'react'
+import InputForm from 'components/InputForm/InputForm'
+import OutputForm from 'components/OutputForm/OutputForm'
+
+import './App.css'
 
 function App() {
   const [output, setOutput] = useState<string>('')
 
-  const transformedOutput = output.trim()
-    ? output
-        .split(',')
-        .map((it) => it.trim())
-        .map((it) => Number(it))
-        // we can filter out NaNs here but it is not defined in the requirements.
-        .map((it) => it * 2)
-        .join(',')
-    : ''
-
   return (
     <div className="App">
-      <Form
-        id="input"
-        title="Input"
-        subtitle="Array"
-        onChangeHandler={(e) => setOutput(e.target.value)}
-      />
-      <Form
-        id="output"
-        title="Output"
-        subtitle="Double"
-        value={transformedOutput}
-        readOnly
-      />
+      <InputForm setOutput={setOutput} />
+      <OutputForm value={output} />
     </div>
   )
 }
