@@ -1,5 +1,7 @@
 import { ChangeEvent } from 'react'
 
+import './Form.css'
+
 interface FormProps {
   id: string
   title: string

@@ -1,0 +1,22 @@
+.form {
+  margin: 1rem 1rem;
+  padding: 2rem 2rem;
+  border: 1px solid gray;
+}
+
+.form h2 {
+  margin-bottom: 4rem;
+}
+
+.form label {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+
+.form input {
+  width: 100%;
+  padding: .6rem .5rem;
+  margin-bottom: 1rem;
+}
+
